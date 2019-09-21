@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingBottom="16dp"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
+        android:paddingTop="25dp"
+        tools:context=".AutoresFragment">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/conteudoEmailLabel"
+                android:text="Conteúdo da Mensagem"
+                android:textColor="#000000"
+                android:paddingBottom="10dp"/>
+
+            <ImageView
+                android:id="@+id/felipeFoto"
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:src="@drawable/foto_felipe" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/nome1"
+                android:text="Felipe Matsumoto"
+                android:textSize="20dp"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:id="@+id/ra1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="RA: 196698" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/biografia1"
+                android:text="Moro em Limeira, gosto de esportes em geral, principalmente futebol e tênis de mesa"
+                android:textColor="#000000"
+                android:paddingBottom="15dp"/>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="500dp"
+                android:id="@+id/luanFoto"
+                android:src="@drawable/luan_foto"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/nome2"
+                android:textSize="20dp"
+                android:text="Luan Medeiros"
+                android:textColor="#000000"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/ra2"
+                android:text="RA: 182237"/>
+
+            <TextView
+                android:id="@+id/biografia2"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="'Um grande apreciador da natureza'"
+                android:textColor="#000000"/>
+
+    </LinearLayout>
+</ScrollView>
