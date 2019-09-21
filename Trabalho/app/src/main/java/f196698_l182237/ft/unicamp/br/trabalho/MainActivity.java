@@ -25,7 +25,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.Menu;
 import android.widget.Toast;
 
-import f196698_l182237.ft.unicamp.br.trabalho.alunos.AlunosFragment;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.ProdutosFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -141,12 +140,4 @@ public class MainActivity extends AppCompatActivity
         fragmentTransaction.commit();
     }
 
-    public void doSomething(String mensagem) {
-        AutoresFragment autoresFrag = (AutoresFragment)fragmentManager.findFragmentByTag("autores");
-        if (autoresFrag == null) {
-            autoresFrag = new AutoresFragment();
-        }
-        autoresFrag.setText(mensagem);
-        replaceFragment(autoresFrag, "autores");
-    }
 }

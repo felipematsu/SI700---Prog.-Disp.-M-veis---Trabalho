@@ -30,13 +30,14 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/textDescProd"/>
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textPrecoUnitProd"/>
+
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textPrecoUnitProd"/>
 
 </LinearLayout>

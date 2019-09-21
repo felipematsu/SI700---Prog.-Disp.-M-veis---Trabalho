@@ -4,9 +4,9 @@ public class Produto {
     String nome;
     String descricao;
     int foto;
-    float preco;
+    double preco;
 
-    public Produto(String nome, String descricao, int foto, float preco) {
+    public Produto(String nome, String descricao, int foto, double preco) {
         this.nome = nome;
         this.descricao = descricao;
         this.foto = foto;
@@ -37,11 +37,11 @@ public class Produto {
         this.foto = foto;
     }
 
-    public float getPreco() {
+    public double getPreco() {
         return preco;
     }
 
-    public void setPreco(float preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
 }
