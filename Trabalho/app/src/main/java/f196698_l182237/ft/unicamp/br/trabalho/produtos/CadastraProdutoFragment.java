@@ -8,10 +8,13 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -19,6 +22,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
+
+import static android.widget.Toast.*;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +37,10 @@ public class CadastraProdutoFragment extends Fragment {
     TextView txtPrecoTotal;
     CheckBox checkPersona;
     EditText editPersona;
+    EditText editNomeCompra;
+    EditText editCpfCompra;
+    Button buttonConfirma;
+    RadioGroup radioGroupTam;
     private int indice;
     private ArrayList<Produto> produtos;
 
@@ -70,8 +79,14 @@ public class CadastraProdutoFragment extends Fragment {
         txtDescProd = view.findViewById(R.id.textDescProduto);
         txtPrecoTotal = view.findViewById(R.id.textPrecoTotal);
         editPersona = view.findViewById(R.id.editPersonaliza);
+        editNomeCompra = view.findViewById(R.id.editNomeComprador);
+        editCpfCompra = view.findViewById(R.id.editCpfComprador);
         checkPersona = view.findViewById(R.id.checkPersonaliza);
+        buttonConfirma = view.findViewById(R.id.buttonConfirma);
+        radioGroupTam = view.findViewById(R.id.radioGTamanho);
+
         checkPersona.setOnClickListener(checkBoxListener);
+        buttonConfirma.setOnClickListener(verificaCampos);
 
 
         displayProdCad();
@@ -101,6 +116,23 @@ public class CadastraProdutoFragment extends Fragment {
             } else {
                 editPersona.setVisibility(view.INVISIBLE);
                 editPersona.setText("");
+            }
+        }
+    };
+
+    public View.OnClickListener verificaCampos = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            int selectedRadioItem = radioGroupTam.getCheckedRadioButtonId();
+
+            if (selectedRadioItem <= 0) {
+                Toast.makeText(getActivity(), "É preciso escolher um tamanho", Toast.LENGTH_SHORT).show();
+            } else if (editPersona.getText().length() == 0 && editPersona.getVisibility() == View.VISIBLE) {
+                Toast.makeText(getActivity(), "É preciso preencher o campo de personalização", Toast.LENGTH_SHORT).show();
+            } else if (editNomeCompra.getText().length() == 0) {
+                Toast.makeText(getActivity(), "Campo Nome obrigatório", Toast.LENGTH_SHORT).show();
+            } else if (editCpfCompra.getText().length() == 0) {
+                Toast.makeText(getActivity(), "Campo CPF obrigatório", Toast.LENGTH_SHORT).show();
             }
         }
     };

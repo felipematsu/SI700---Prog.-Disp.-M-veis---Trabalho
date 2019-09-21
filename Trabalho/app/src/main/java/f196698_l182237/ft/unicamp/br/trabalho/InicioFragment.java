@@ -17,7 +17,7 @@ import android.widget.ImageView;
 public class InicioFragment extends Fragment {
 
     View view;
-    ImageView imageView;
+//    ImageView imageView;
 
     public InicioFragment() {
         // Required empty public constructor
@@ -31,9 +31,9 @@ public class InicioFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_inicio, container, false);
         }
 
-        imageView = view.findViewById(R.id.imageLogoLoja);
+//        imageView = view.findViewById(R.id.imageLogoLoja);
 
-        imageView.setImageResource(R.drawable.logo_loja);
+//        imageView.setImageResource(R.drawable.logo_loja);
 
         return view;
     }
