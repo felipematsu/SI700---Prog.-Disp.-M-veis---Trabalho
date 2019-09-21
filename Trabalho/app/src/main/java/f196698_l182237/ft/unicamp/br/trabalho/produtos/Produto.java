@@ -5,12 +5,22 @@ public class Produto {
     String descricao;
     int foto;
     double preco;
+    int id;
 
-    public Produto(String nome, String descricao, int foto, double preco) {
+    public Produto(String nome, String descricao, int foto, double preco, int id) {
         this.nome = nome;
         this.descricao = descricao;
         this.foto = foto;
         this.preco = preco;
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getNome() {
