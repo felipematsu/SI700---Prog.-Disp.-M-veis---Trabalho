@@ -58,7 +58,7 @@
 
         <Spinner
             android:id="@+id/spinnerQtde"
-            android:layout_width="wrap_content"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:entries="@array/spinner_values" />
 
@@ -110,7 +110,7 @@
 
     <EditText
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:id="@+id/editPersonaliza"
         android:visibility="invisible"
         android:hint="Escolha uma frase para estampa"/>
@@ -119,6 +119,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textDadosCompra"
+        android:textSize="20dp"
+        android:paddingTop="15dp"
         android:text="Dados do Comprador"
         android:textColor="#000000"/>
 

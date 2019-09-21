@@ -1,5 +1,7 @@
 package f196698_l182237.ft.unicamp.br.trabalho.produtos;
 
+import java.util.List;
+
 public class Produto {
     String nome;
     String descricao;

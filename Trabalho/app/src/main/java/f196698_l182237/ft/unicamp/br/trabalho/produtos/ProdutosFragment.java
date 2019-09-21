@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
+import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnCadastroRequest;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,11 +27,15 @@ public class ProdutosFragment extends Fragment {
     private View view;
     private RecyclerView mRecyclerView;
     private MyFirstAdapter mAdapter;
-    private FragmentManager fragmentManager;
+    private OnCadastroRequest onCadastroRequest;
 
 
     public ProdutosFragment() {
         // Required empty public constructor
+    }
+
+    public void setOnCadastroRequest(OnCadastroRequest onCadastroRequest) {
+        this.onCadastroRequest = onCadastroRequest;
     }
 
 
@@ -50,12 +55,10 @@ public class ProdutosFragment extends Fragment {
 
         mAdapter.setMyOnItemClickListener(new MyFirstAdapter.MyOnItemClickListener() {
             @Override
-            public void MyOnItemClick(String nome, String desc, String preco) {
-//                Fragment cadastraProdutoFragment = fragmentManager.findFragmentByTag("cadastraProduto");
-//                if (cadastraProdutoFragment == null) {
-//                    cadastraProdutoFragment = new CadastraProdutoFragment();
-//                }
-//                Toast.makeText(getActivity(), nome + desc + preco, Toast.LENGTH_LONG).show();
+            public void MyOnItemClick(int position) {
+                if (onCadastroRequest != null) {
+                    onCadastroRequest.onRequest(position);
+                }
             }
         });
 

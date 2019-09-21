@@ -20,12 +20,10 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     private ArrayList<Produto> produtos;
     private MyOnItemClickListener myOnItemClickListener;
 
-    public MyFirstAdapter(ArrayList produtos) {
-        this.produtos = produtos;
-    }
+    public MyFirstAdapter(ArrayList produtos) { this.produtos = produtos;}
 
     public interface MyOnItemClickListener {
-        void MyOnItemClick(String nome, String desc, String preco);
+        void MyOnItemClick(int position);
     }
 
 
@@ -33,24 +31,23 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_layout, parent, false);
+        final MyFirstViewHolder holder = new MyFirstViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (myOnItemClickListener != null) {
-                    TextView txtNome = view.findViewById(R.id.textNomeProd);
-                    TextView txtDesc = view.findViewById(R.id.textDescProd);
-                    TextView txtPreco = view.findViewById(R.id.textPrecoUnitProd);
-                    myOnItemClickListener.MyOnItemClick(txtNome.getText().toString(), txtDesc.getText().toString(), txtPreco.getText().toString());
+                    myOnItemClickListener.MyOnItemClick(holder.position);
                 }
             }
         });
-        return new MyFirstViewHolder(v);
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         Produto produto = produtos.get(position);
-        ((MyFirstViewHolder) holder).onBind(produto);
+        ((MyFirstViewHolder)holder).onBind(produto);
+        ((MyFirstViewHolder)holder).setPosition(position);
     }
 
     @Override
@@ -58,7 +55,7 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
         return this.produtos.size();
     }
 
-    public void setMyOnItemClickListener(MyOnItemClickListener myOnItemClickListener) {
+    public void setMyOnItemClickListener (MyOnItemClickListener myOnItemClickListener) {
         this.myOnItemClickListener = myOnItemClickListener;
     }
 
@@ -69,14 +66,12 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
         private TextView txtPrecoProd;
         private int position;
 
-        public void setPosition(int position) {
-            this.position = position;
-        }
+        public void setPosition(int position) { this.position = position; }
 
         public MyFirstViewHolder(final View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.imageProd);
-            txtNomeProd = itemView.findViewById(R.id.textNomeProd);
+            txtNomeProd= itemView.findViewById(R.id.textNomeProd);
             txtDescProd = itemView.findViewById(R.id.textDescProd);
             txtPrecoProd = itemView.findViewById(R.id.textPrecoUnitProd);
         }
@@ -85,7 +80,7 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
             imageView.setImageResource(produto.getFoto());
             txtNomeProd.setText(produto.getNome());
             txtDescProd.setText(produto.getDescricao());
-            txtPrecoProd.setText("R$" + String.valueOf(produto.getPreco()));
+            txtPrecoProd.setText("R$ " + String.valueOf(produto.getPreco()));
         }
 
     }
