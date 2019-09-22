@@ -17,7 +17,6 @@ import android.widget.ImageView;
 public class PedidosFragment extends Fragment {
 
     private View view;
-    private ImageView imageView;
 
     public PedidosFragment() {
         // Required empty public constructor
@@ -31,8 +30,6 @@ public class PedidosFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_pedidos, container, false);
         }
 
-        imageView = view.findViewById(R.id.imageFotoLoja);
-//        imageView.setImageResource();
 
         return view;
     }

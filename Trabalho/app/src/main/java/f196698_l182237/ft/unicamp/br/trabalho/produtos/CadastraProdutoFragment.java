@@ -8,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -135,6 +134,8 @@ public class CadastraProdutoFragment extends Fragment {
                 Toast.makeText(getActivity(), "Campo Nome obrigatório", Toast.LENGTH_SHORT).show();
             } else if (editCpfCompra.getText().length() == 0) {
                 Toast.makeText(getActivity(), "Campo CPF obrigatório", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Pedido Confirmado", Toast.LENGTH_SHORT).show();
             }
         }
     };
