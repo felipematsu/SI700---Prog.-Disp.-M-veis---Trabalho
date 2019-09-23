@@ -112,7 +112,7 @@ public class CadastraProdutoFragment extends Fragment {
     public View.OnClickListener checkBoxListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            if (editPersona.getVisibility() == View.INVISIBLE) {
+            if (editPersona.getVisibility() == View.INVISIBLE && checkPersona.isChecked()) {
                 editPersona.setVisibility(view.VISIBLE);
             } else {
                 editPersona.setVisibility(view.INVISIBLE);
