@@ -7,7 +7,7 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Opções</string>
 
-    <string name="menu_home">Home</string>
+    <string name="menu_inicio">Início</string>
     <string name="menu_produtos">Produtos</string>
     <string name="menu_pedidos">Pedidos</string>
     <string name="menu_local">Localização</string>
