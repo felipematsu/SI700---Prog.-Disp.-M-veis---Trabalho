@@ -25,7 +25,6 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.Menu;
 
 import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnCadastroRequest;
-import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnPedidosRequest;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosFragment;
 import f196698_l182237.ft.unicamp.br.trabalho.cadastroProduto.CadastraProdutoFragment;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.ProdutosFragment;
@@ -119,16 +118,6 @@ public class MainActivity extends AppCompatActivity
                         CadastraProdutoFragment cadastraProdFragment = (CadastraProdutoFragment) fragmentManager.findFragmentByTag("cadastroProd");
                         if (cadastraProdFragment == null) {
                             cadastraProdFragment = new CadastraProdutoFragment();
-                            ((CadastraProdutoFragment) cadastraProdFragment).setOnPedidosRequest(new OnPedidosRequest() {
-                                @Override
-                                public void onRequest() {
-                                    PedidosFragment pedidosFragment = (PedidosFragment) fragmentManager.findFragmentByTag("pedidos");
-                                    if (pedidosFragment == null) {
-                                        pedidosFragment = new PedidosFragment();
-                                    }
-                                    replaceFragment(pedidosFragment, "pedidos");
-                                }
-                            });
                         }
                         cadastraProdFragment.setIndice(position);
                         replaceFragment(cadastraProdFragment, "cadastroProd");

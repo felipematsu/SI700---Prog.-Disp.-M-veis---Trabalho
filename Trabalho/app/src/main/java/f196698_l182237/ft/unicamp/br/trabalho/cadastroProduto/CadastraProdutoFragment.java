@@ -19,18 +19,14 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
-import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnPedidosRequest;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedido;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedidos;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosAdapter;
-import f196698_l182237.ft.unicamp.br.trabalho.produtos.MyFirstAdapter;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produto;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produtos;
 
@@ -54,10 +50,9 @@ public class CadastraProdutoFragment extends Fragment {
     Spinner spinnerQtde;
     private int indice;
     private ArrayList<Produto> produtos;
-    private ArrayList<Pedido> pedidos;
+    ArrayList<Pedido> pedidos;
     PedidosAdapter mAdapter;
     RecyclerView mRecyclerView;
-    private OnPedidosRequest onPedidosRequest;
 
     public CadastraProdutoFragment() {
         this.indice = 0;
@@ -81,9 +76,6 @@ public class CadastraProdutoFragment extends Fragment {
         this.indice = indice;
     }
 
-    public void setOnPedidosRequest(OnPedidosRequest onPedidosRequest) {
-        this.onPedidosRequest = onPedidosRequest;
-    }
 
 
     @Override
@@ -175,14 +167,8 @@ public class CadastraProdutoFragment extends Fragment {
 
                 mRecyclerView.setAdapter(mAdapter);
 
-                mAdapter.setMyOnButtonClickListener(new PedidosAdapter.MyOnButtonClickListener() {
-                    @Override
-                    public void MyOnButtonClick() {
-                        if (onPedidosRequest != null) {
-                            onPedidosRequest.onRequest();
-                        }
-                    }
-                });
+
+
             }
         }
     };

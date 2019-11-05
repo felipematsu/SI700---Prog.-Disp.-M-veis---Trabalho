@@ -14,7 +14,7 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
-import f196698_l182237.ft.unicamp.br.trabalho.produtos.MyFirstAdapter;
+import f196698_l182237.ft.unicamp.br.trabalho.cadastroProduto.CadastraProdutoFragment;
 
 public class PedidosAdapter extends RecyclerView.Adapter {
 
@@ -34,6 +34,14 @@ public class PedidosAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_pedidos, parent, false);
         final MyPedidoViewHolder holder = new MyPedidoViewHolder(view);
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (myOnButtonClickListener != null) {
+                    myOnButtonClickListener.MyOnButtonClick();
+                }
+            }
+        });
         return holder;
     }
 
