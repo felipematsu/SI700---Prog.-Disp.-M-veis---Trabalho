@@ -1,9 +1,10 @@
-package f196698_l182237.ft.unicamp.br.trabalho.produtos;
+package f196698_l182237.ft.unicamp.br.trabalho.cadastroProduto;
 
 
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,17 +13,22 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
+import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
+import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedido;
+import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedidos;
+import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosAdapter;
+import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produto;
+import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produtos;
 
 
 /**
@@ -44,11 +50,14 @@ public class CadastraProdutoFragment extends Fragment {
     Spinner spinnerQtde;
     private int indice;
     private ArrayList<Produto> produtos;
-
+    ArrayList<Pedido> pedidos;
+    PedidosAdapter mAdapter;
+    RecyclerView mRecyclerView;
 
     public CadastraProdutoFragment() {
         this.indice = 0;
         this.produtos = new ArrayList<>(Arrays.asList(Produtos.produtos));
+        this.pedidos = new ArrayList<>();
     }
 
     public ArrayList<Produto> getProdutos() {
@@ -66,6 +75,7 @@ public class CadastraProdutoFragment extends Fragment {
     public void setIndice(int indice) {
         this.indice = indice;
     }
+
 
 
     @Override
@@ -136,6 +146,29 @@ public class CadastraProdutoFragment extends Fragment {
                 Toast.makeText(getActivity(), "Campo CPF obrigatório", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "Pedido Confirmado", Toast.LENGTH_SHORT).show();
+
+                Produto produto = Produtos.produtos[indice];
+
+                int quantidade = spinnerQtde.getSelectedItemPosition() + 1;
+
+                boolean personalizacao = checkPersona.isChecked();
+                String personalizacaoFrase = editPersona.getText().toString();
+
+                int selectedTamanho = radioGroupTam.getCheckedRadioButtonId();
+                RadioButton radioTam = radioGroupTam.findViewById(selectedTamanho);
+                String tamanho = radioTam.getText().toString();
+
+                Comprador comprador = new Comprador(editNomeCompra.getText().toString(), editCpfCompra.getText().toString());
+
+                Pedido pedido = new Pedido(produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
+                pedidos.add(pedido);
+
+                mAdapter = new PedidosAdapter(pedidos);
+
+                mRecyclerView.setAdapter(mAdapter);
+
+
+
             }
         }
     };
