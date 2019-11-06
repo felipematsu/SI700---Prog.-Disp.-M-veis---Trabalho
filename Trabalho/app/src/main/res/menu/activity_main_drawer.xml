@@ -20,6 +20,10 @@
             android:id="@+id/nav_local"
             android:icon="@drawable/ic_localizacao"
             android:title="@string/menu_local"/>
+<!--        <item-->
+<!--            android:id="@+id/nav_logout"-->
+<!--            android:icon="@drawable/ic_localizacao"-->
+<!--            android:title="@string/menu_logout"/>-->
 
     </group>
 </menu>
