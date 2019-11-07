@@ -23,6 +23,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import f196698_l182237.ft.unicamp.br.trabalho.MainActivity;
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 
 public class SignInActivity extends AppCompatActivity implements
@@ -47,8 +48,8 @@ public class SignInActivity extends AppCompatActivity implements
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.disconnect_button).setOnClickListener(this);
-        findViewById(R.id.finish_button).setOnClickListener(this);
+//        findViewById(R.id.disconnect_button).setOnClickListener(this);
+//        findViewById(R.id.finish_button).setOnClickListener(this);
 
         // [START configure_signin]
         // Configure sign-in to request the users ID, email address, and basic
@@ -131,8 +132,8 @@ public class SignInActivity extends AppCompatActivity implements
                             Toast.makeText(SignInActivity.this, "Authentication with firebase failed.",
                                     Toast.LENGTH_SHORT).show();
                         } else {
-                            //startActivity(new Intent(SignInActivity.this, MainActivity.class));
-                            //finish();
+                            startActivity(new Intent(SignInActivity.this, MainActivity.class));
+                            finish();
                         }
                     }
                 });
@@ -197,12 +198,12 @@ public class SignInActivity extends AppCompatActivity implements
             case R.id.sign_out_button:
                 signOut();
                 break;
-            case R.id.disconnect_button:
-                revokeAccess();
-                break;
-            case R.id.finish_button:
-                finish();
-                break;
+//            case R.id.disconnect_button:
+//                revokeAccess();
+//                break;
+//            case R.id.finish_button:
+//                finish();
+//                break;
         }
     }
 }

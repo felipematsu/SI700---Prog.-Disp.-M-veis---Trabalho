@@ -82,19 +82,19 @@
                 android:layout_weight="1"
                 android:text="Sign Out" />
 
-            <Button
-                android:id="@+id/disconnect_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Revoke" />
+<!--            <Button-->
+<!--                android:id="@+id/disconnect_button"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Revoke" />-->
 
-            <Button
-                android:id="@+id/finish_button"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Finish" />
+<!--            <Button-->
+<!--                android:id="@+id/finish_button"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_weight="1"-->
+<!--                android:text="Finish" />-->
         </LinearLayout>
 
         <com.google.android.gms.common.SignInButton

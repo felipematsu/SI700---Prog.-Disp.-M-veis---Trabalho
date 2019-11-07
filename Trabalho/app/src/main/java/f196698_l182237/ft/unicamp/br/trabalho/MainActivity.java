@@ -93,12 +93,12 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity
             }
             replaceFragment(localFragment, "local");
         } else if (id == R.id.nav_logout) {
-//            startActivity(new Intent(this, SignInActivity.class));
+            startActivity(new Intent(this, SignInActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
