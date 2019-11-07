@@ -1,4 +1,4 @@
-package f196698_l182237.ft.unicamp.br.trabalho;
+package f196698_l182237.ft.unicamp.br.trabalho.login;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,6 +22,8 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+
+import f196698_l182237.ft.unicamp.br.trabalho.R;
 
 public class SignInActivity extends AppCompatActivity implements
         View.OnClickListener {

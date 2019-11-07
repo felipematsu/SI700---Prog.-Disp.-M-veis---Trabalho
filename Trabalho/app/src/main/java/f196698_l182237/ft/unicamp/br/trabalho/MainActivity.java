@@ -28,6 +28,7 @@ import androidx.fragment.app.FragmentTransaction;
 import android.view.Menu;
 
 import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnCadastroRequest;
+import f196698_l182237.ft.unicamp.br.trabalho.login.SignInActivity;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosFragment;
 import f196698_l182237.ft.unicamp.br.trabalho.cadastroProduto.CadastraProdutoFragment;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.ProdutosFragment;
@@ -142,6 +143,8 @@ public class MainActivity extends AppCompatActivity
                 localFragment = new LocalFragment();
             }
             replaceFragment(localFragment, "local");
+        } else if (id == R.id.nav_logout) {
+//            startActivity(new Intent(this, SignInActivity.class));
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
