@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.firebase.ui.database.SnapshotParser;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -39,6 +42,8 @@ public class PedidosFragment extends Fragment {
     private View view;
     private RecyclerView mRecyclerView;
     private TextView labelPedidos;
+    private FirebaseAuth mFirebaseAuth;
+    private GoogleSignInAccount account;
 
     public PedidosFragment() {
         // Required empty public constructor
@@ -74,6 +79,9 @@ public class PedidosFragment extends Fragment {
 
         labelPedidos = view.findViewById(R.id.labelAquiPedidos);
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        account = GoogleSignIn.getLastSignedInAccount(getContext());
+
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         SnapshotParser<Pedido> parser = new SnapshotParser<Pedido>() {
             @NonNull
@@ -84,7 +92,7 @@ public class PedidosFragment extends Fragment {
             }
         };
 
-        DatabaseReference messagesRef = mFirebaseDatabaseReference.child("pedidos");
+        DatabaseReference messagesRef = mFirebaseDatabaseReference.child("pedidos").child(account.getEmail().replace(".", "_"));
         FirebaseRecyclerOptions<Pedido> options = new FirebaseRecyclerOptions.Builder<Pedido>().setQuery(messagesRef, parser).build();
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Pedido, PedidosViewHolder>(options) {
             @Override
@@ -109,7 +117,7 @@ public class PedidosFragment extends Fragment {
         mRecyclerView.setLayoutManager(new LinearLayoutManager((getActivity())));
         mRecyclerView.setAdapter(mFirebaseAdapter);
 
-        mFirebaseAdapter.
+//        mFirebaseAdapter.
 
         return view;
     }

@@ -149,15 +149,15 @@ public class SignInActivity extends AppCompatActivity implements
 
     // [START signOut]
     private void signOut() {
-        mGoogleSignInClient.signOut()
-                .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+        mGoogleSignInClient.signOut().addOnCompleteListener(this, new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // [START_EXCLUDE]
                         updateUI(null);
                         // [END_EXCLUDE]
                     }
-                });
+        });
+        mFirebaseAuth.signOut();
     }
     // [END signOut]
 

@@ -19,6 +19,9 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -55,6 +58,8 @@ public class CadastraProdutoFragment extends Fragment {
     RecyclerView mRecyclerView;
 
     private DatabaseReference mFirebaseDatabaseReference;
+    private FirebaseAuth mFirebaseAuth;
+    private GoogleSignInAccount account;
 
     public CadastraProdutoFragment() {
         this.indice = 0;
@@ -86,6 +91,9 @@ public class CadastraProdutoFragment extends Fragment {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_cadastra_produto, container, false);
         }
+
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        account = GoogleSignIn.getLastSignedInAccount(getContext());
 
         imageView = view.findViewById(R.id.imageFotoCadastro);
         txtNomeProd = view.findViewById(R.id.textNomeCadasProd);
@@ -163,10 +171,9 @@ public class CadastraProdutoFragment extends Fragment {
 
                 Comprador comprador = new Comprador(editNomeCompra.getText().toString(), editCpfCompra.getText().toString());
 
-                Pedido pedido = new Pedido(produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
-                pedidos.add(pedido);
+                Pedido pedido = new Pedido(account.getEmail(), produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
 
-                mFirebaseDatabaseReference.child("pedidos").push().setValue(pedido);
+                mFirebaseDatabaseReference.child("pedidos").child(account.getEmail().replace(".", "_")).push().setValue(pedido);
 
             }
         }

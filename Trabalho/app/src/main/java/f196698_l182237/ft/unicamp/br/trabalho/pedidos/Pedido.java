@@ -11,11 +11,12 @@ public class Pedido {
     private String frasePersonalizado = null;
     private String tamanho;
     private Comprador comprador;
+    private String contaUsuario;
 
     public Pedido(){
     }
 
-    public Pedido(Produto produto, int quantidade, double valorTotal, boolean personalizado, String frasePersonalizado, String tamanho, Comprador comprador) {
+    public Pedido(String contaUsuario, Produto produto, int quantidade, double valorTotal, boolean personalizado, String frasePersonalizado, String tamanho, Comprador comprador) {
         this.produto = produto;
         this.quantidade = quantidade;
         this.valorTotal = valorTotal;
@@ -23,6 +24,7 @@ public class Pedido {
         this.frasePersonalizado = frasePersonalizado;
         this.tamanho = tamanho;
         this.comprador = comprador;
+        this.contaUsuario = contaUsuario;
     }
 
     public Produto getProduto() {
@@ -79,5 +81,13 @@ public class Pedido {
 
     public void setComprador(Comprador comprador) {
         this.comprador = comprador;
+    }
+
+    public String getContaUsuario() {
+        return contaUsuario;
+    }
+
+    public void setContaUsuario(String contaUsuario) {
+        this.contaUsuario = contaUsuario;
     }
 }
