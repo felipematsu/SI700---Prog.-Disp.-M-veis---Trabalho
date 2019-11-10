@@ -6,6 +6,16 @@
     android:orientation="vertical"
     tools:context=".pedidos.PedidosFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelAquiPedidos"
+        android:text="Aqui estão seus pedidos"
+        android:textColor="#000000"
+        android:paddingBottom="10dp"
+        android:textSize="20dp"
+        android:gravity="center"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

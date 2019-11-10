@@ -49,7 +49,7 @@ public class SignInActivity extends AppCompatActivity implements
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
 //        findViewById(R.id.disconnect_button).setOnClickListener(this);
-//        findViewById(R.id.finish_button).setOnClickListener(this);
+        findViewById(R.id.finish_button).setOnClickListener(this);
 
         // [START configure_signin]
         // Configure sign-in to request the users ID, email address, and basic
@@ -201,9 +201,9 @@ public class SignInActivity extends AppCompatActivity implements
 //            case R.id.disconnect_button:
 //                revokeAccess();
 //                break;
-//            case R.id.finish_button:
-//                finish();
-//                break;
+            case R.id.finish_button:
+                finish();
+                break;
         }
     }
 }

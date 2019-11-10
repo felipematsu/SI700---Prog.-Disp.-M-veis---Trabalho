@@ -12,6 +12,9 @@ public class Pedido {
     private String tamanho;
     private Comprador comprador;
 
+    public Pedido(){
+    }
+
     public Pedido(Produto produto, int quantidade, double valorTotal, boolean personalizado, String frasePersonalizado, String tamanho, Comprador comprador) {
         this.produto = produto;
         this.quantidade = quantidade;

@@ -19,14 +19,15 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedido;
-import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedidos;
-import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosAdapter;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produto;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produtos;
 
@@ -51,8 +52,9 @@ public class CadastraProdutoFragment extends Fragment {
     private int indice;
     private ArrayList<Produto> produtos;
     ArrayList<Pedido> pedidos;
-    PedidosAdapter mAdapter;
     RecyclerView mRecyclerView;
+
+    private DatabaseReference mFirebaseDatabaseReference;
 
     public CadastraProdutoFragment() {
         this.indice = 0;
@@ -109,6 +111,7 @@ public class CadastraProdutoFragment extends Fragment {
     public void onStart() {
         super.onStart();
         displayProdCad();
+        mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
     public void displayProdCad() {
@@ -163,11 +166,7 @@ public class CadastraProdutoFragment extends Fragment {
                 Pedido pedido = new Pedido(produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
                 pedidos.add(pedido);
 
-                mAdapter = new PedidosAdapter(pedidos);
-
-                mRecyclerView.setAdapter(mAdapter);
-
-
+                mFirebaseDatabaseReference.child("pedidos").push().setValue(pedido);
 
             }
         }

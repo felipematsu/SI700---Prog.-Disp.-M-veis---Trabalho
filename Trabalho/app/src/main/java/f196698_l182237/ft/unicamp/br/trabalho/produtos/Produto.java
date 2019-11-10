@@ -9,6 +9,8 @@ public class Produto {
     double preco;
     int id;
 
+    public Produto(){}
+
     public Produto(String nome, String descricao, int foto, double preco, int id) {
         this.nome = nome;
         this.descricao = descricao;

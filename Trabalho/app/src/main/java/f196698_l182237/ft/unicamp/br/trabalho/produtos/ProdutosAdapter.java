@@ -9,18 +9,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
-
 import java.util.ArrayList;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 
-public class MyFirstAdapter extends RecyclerView.Adapter {
+public class ProdutosAdapter extends RecyclerView.Adapter {
 
     private ArrayList<Produto> produtos;
     private MyOnItemClickListener myOnItemClickListener;
 
-    public MyFirstAdapter(ArrayList produtos) { this.produtos = produtos;}
+    public ProdutosAdapter(ArrayList produtos) { this.produtos = produtos;}
 
     public interface MyOnItemClickListener {
         void MyOnItemClick(int position);
@@ -30,7 +28,7 @@ public class MyFirstAdapter extends RecyclerView.Adapter {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_layout, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_produtos, parent, false);
         final MyFirstViewHolder holder = new MyFirstViewHolder(v);
         v.setOnClickListener(new View.OnClickListener() {
             @Override

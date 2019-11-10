@@ -3,7 +3,9 @@ package f196698_l182237.ft.unicamp.br.trabalho.comprador;
 public class Comprador {
     private String nome;
     private String cpf;
-    private int id;
+
+    public Comprador(){
+    }
 
     public Comprador(String nome, String cpf) {
         this.nome = nome;
@@ -24,13 +26,5 @@ public class Comprador {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 }
