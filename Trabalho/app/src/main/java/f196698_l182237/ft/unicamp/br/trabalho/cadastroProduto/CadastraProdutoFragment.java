@@ -30,6 +30,7 @@ import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
+import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnPedidosRequest;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedido;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produto;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produtos;
@@ -61,10 +62,16 @@ public class CadastraProdutoFragment extends Fragment {
     private FirebaseAuth mFirebaseAuth;
     private GoogleSignInAccount account;
 
+    private OnPedidosRequest onPedidosRequest;
+
     public CadastraProdutoFragment() {
         this.indice = 0;
         this.produtos = new ArrayList<>(Arrays.asList(Produtos.produtos));
         this.pedidos = new ArrayList<>();
+    }
+
+    public void setOnPedidosRequest(OnPedidosRequest onPedidosRequest) {
+        this.onPedidosRequest = onPedidosRequest;
     }
 
     public ArrayList<Produto> getProdutos() {
@@ -175,6 +182,9 @@ public class CadastraProdutoFragment extends Fragment {
 
                 mFirebaseDatabaseReference.child("pedidos").child(account.getEmail().replace(".", "_")).push().setValue(pedido);
 
+                if(onPedidosRequest != null) {
+                    onPedidosRequest.onRequest();
+                }
             }
         }
     };
