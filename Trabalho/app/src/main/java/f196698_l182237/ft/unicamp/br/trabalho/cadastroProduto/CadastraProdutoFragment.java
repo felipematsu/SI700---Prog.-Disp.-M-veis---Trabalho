@@ -189,4 +189,16 @@ public class CadastraProdutoFragment extends Fragment {
         }
     };
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        editNomeCompra.setText("");
+        editCpfCompra.setText("");
+        editPersona.setText("");
+        spinnerQtde.setSelection(0);
+        radioGroupTam.check(R.id.radioTamP);
+        checkPersona.setChecked(false);
+        editPersona.setVisibility(view.INVISIBLE);
+    }
 }
