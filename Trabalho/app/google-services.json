@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "544809799330",
+    "firebase_url": "https://trabalho-3cee1.firebaseio.com",
+    "project_id": "trabalho-3cee1",
+    "storage_bucket": "trabalho-3cee1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:544809799330:android:4e89447dcaf66e6ee7d1fb",
+        "android_client_info": {
+          "package_name": "f196698_l182237.ft.unicamp.br.trabalho"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "544809799330-2kch6une3on5511m5p6ne9nascb41oc8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "f196698_l182237.ft.unicamp.br.trabalho",
+            "certificate_hash": "d5af965cb6ae6ac31b8b2057aa8b5902b3b11f24"
+          }
+        },
+        {
+          "client_id": "544809799330-r1r8jhabl4qi0ev4gufnhiq996jnhf25.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7dJ5rnr-xX-r5Xm_ZYlzUji4gqO3_K3Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "544809799330-r1r8jhabl4qi0ev4gufnhiq996jnhf25.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

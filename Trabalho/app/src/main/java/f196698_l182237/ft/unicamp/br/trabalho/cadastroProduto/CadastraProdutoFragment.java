@@ -19,14 +19,19 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
+import f196698_l182237.ft.unicamp.br.trabalho.interfaces.OnPedidosRequest;
 import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedido;
-import f196698_l182237.ft.unicamp.br.trabalho.pedidos.Pedidos;
-import f196698_l182237.ft.unicamp.br.trabalho.pedidos.PedidosAdapter;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produto;
 import f196698_l182237.ft.unicamp.br.trabalho.produtos.Produtos;
 
@@ -51,13 +56,22 @@ public class CadastraProdutoFragment extends Fragment {
     private int indice;
     private ArrayList<Produto> produtos;
     ArrayList<Pedido> pedidos;
-    PedidosAdapter mAdapter;
     RecyclerView mRecyclerView;
+
+    private DatabaseReference mFirebaseDatabaseReference;
+    private FirebaseAuth mFirebaseAuth;
+    private GoogleSignInAccount account;
+
+    private OnPedidosRequest onPedidosRequest;
 
     public CadastraProdutoFragment() {
         this.indice = 0;
         this.produtos = new ArrayList<>(Arrays.asList(Produtos.produtos));
         this.pedidos = new ArrayList<>();
+    }
+
+    public void setOnPedidosRequest(OnPedidosRequest onPedidosRequest) {
+        this.onPedidosRequest = onPedidosRequest;
     }
 
     public ArrayList<Produto> getProdutos() {
@@ -85,6 +99,9 @@ public class CadastraProdutoFragment extends Fragment {
             view = inflater.inflate(R.layout.fragment_cadastra_produto, container, false);
         }
 
+        mFirebaseAuth = FirebaseAuth.getInstance();
+        account = GoogleSignIn.getLastSignedInAccount(getContext());
+
         imageView = view.findViewById(R.id.imageFotoCadastro);
         txtNomeProd = view.findViewById(R.id.textNomeCadasProd);
         txtDescProd = view.findViewById(R.id.textDescProduto);
@@ -109,6 +126,7 @@ public class CadastraProdutoFragment extends Fragment {
     public void onStart() {
         super.onStart();
         displayProdCad();
+        mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
     public void displayProdCad() {
@@ -160,17 +178,27 @@ public class CadastraProdutoFragment extends Fragment {
 
                 Comprador comprador = new Comprador(editNomeCompra.getText().toString(), editCpfCompra.getText().toString());
 
-                Pedido pedido = new Pedido(produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
-                pedidos.add(pedido);
+                Pedido pedido = new Pedido(account.getEmail(), produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
 
-                mAdapter = new PedidosAdapter(pedidos);
+                mFirebaseDatabaseReference.child("pedidos").child(account.getEmail().replace(".", "_")).push().setValue(pedido);
 
-                mRecyclerView.setAdapter(mAdapter);
-
-
-
+                if(onPedidosRequest != null) {
+                    onPedidosRequest.onRequest();
+                }
             }
         }
     };
 
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        editNomeCompra.setText("");
+        editCpfCompra.setText("");
+        editPersona.setText("");
+        spinnerQtde.setSelection(0);
+        radioGroupTam.check(R.id.radioTamP);
+        checkPersona.setChecked(false);
+        editPersona.setVisibility(view.INVISIBLE);
+    }
 }
