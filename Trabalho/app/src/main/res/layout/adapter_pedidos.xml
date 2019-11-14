@@ -79,7 +79,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelMaisDetalhes"
-        android:text="Clique para mais detalhes..."
+        android:text="Clique para remover o pedido"
         android:paddingBottom="10dp"/>
 
 </LinearLayout>

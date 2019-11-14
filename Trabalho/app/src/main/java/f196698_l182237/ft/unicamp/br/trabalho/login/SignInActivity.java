@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,8 @@ public class SignInActivity extends AppCompatActivity implements
 
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
+    private TextView mTitleTextView;
+    private ImageView mLogoImageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class SignInActivity extends AppCompatActivity implements
 
         // Views
         mStatusTextView = findViewById(R.id.status);
+        mTitleTextView = findViewById(R.id.title_text);
+        mLogoImageView = findViewById(R.id.imageViewLogoLogin);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
@@ -177,12 +182,17 @@ public class SignInActivity extends AppCompatActivity implements
 
     private void updateUI(GoogleSignInAccount account) {
         if (account != null) {
-            mStatusTextView.setText("Signed In as: " + account.getDisplayName());
+            mStatusTextView.setText("Olá " + account.getDisplayName() + "!");
+            mTitleTextView.setText("Agradecemos sua preferência!");
+            mLogoImageView.setVisibility(View.INVISIBLE);
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
-            mStatusTextView.setText("Deslogado");
+            mStatusTextView.setText("Realize o login para acessar o app");
+            mTitleTextView.setText("Bem vindo(a) a Via Amore!");
+            mLogoImageView.setVisibility(View.VISIBLE);
+            mLogoImageView.setImageResource(R.drawable.logo_loja);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
@@ -197,6 +207,7 @@ public class SignInActivity extends AppCompatActivity implements
                 break;
             case R.id.sign_out_button:
                 signOut();
+                mLogoImageView.setImageResource(R.drawable.logo_loja);
                 break;
 //            case R.id.disconnect_button:
 //                revokeAccess();

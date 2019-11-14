@@ -1,6 +1,8 @@
 package f196698_l182237.ft.unicamp.br.trabalho.pedidos;
 
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -8,7 +10,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.renderscript.Sampler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,12 +25,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-
-import org.w3c.dom.Text;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 
@@ -96,12 +91,31 @@ public class PedidosFragment extends Fragment {
         FirebaseRecyclerOptions<Pedido> options = new FirebaseRecyclerOptions.Builder<Pedido>().setQuery(messagesRef, parser).build();
         mFirebaseAdapter = new FirebaseRecyclerAdapter<Pedido, PedidosViewHolder>(options) {
             @Override
-            protected void onBindViewHolder(@NonNull PedidosViewHolder pedidosViewHolder, int i, @NonNull Pedido pedido) {
+            protected void onBindViewHolder(@NonNull final PedidosViewHolder pedidosViewHolder, final int i, @NonNull final Pedido pedido) {
                 pedidosViewHolder.txtNomePedido.setText(pedido.getProduto().getNome());
                 pedidosViewHolder.txtValorTotal.setText("R$ " + String.valueOf(pedido.getValorTotal()));
                 pedidosViewHolder.txtTamanho.setText(pedido.getTamanho());
                 pedidosViewHolder.imagePedido.setImageResource(pedido.getProduto().getFoto());
                 pedidosViewHolder.txtQtdePedido.setText(String.valueOf(pedido.getQuantidade()));
+                pedidosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder cancelarExcluir = new AlertDialog.Builder(getContext());
+                        cancelarExcluir.setTitle("Remover Pedido");
+                        cancelarExcluir.setMessage("Deseja remover este pedido?");
+                        cancelarExcluir.setNegativeButton("Não", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                            }
+                        });
+                        cancelarExcluir.setPositiveButton("Sim", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                mFirebaseAdapter.getRef(pedidosViewHolder.getLayoutPosition()).removeValue();
+                            }
+                        });
+                        cancelarExcluir.create().show();
+                    }
+                });
             }
 
             @NonNull
@@ -116,8 +130,6 @@ public class PedidosFragment extends Fragment {
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.setLayoutManager(new LinearLayoutManager((getActivity())));
         mRecyclerView.setAdapter(mFirebaseAdapter);
-
-//        mFirebaseAdapter.
 
         return view;
     }
