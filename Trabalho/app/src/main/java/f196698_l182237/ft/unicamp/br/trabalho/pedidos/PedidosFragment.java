@@ -51,6 +51,9 @@ public class PedidosFragment extends Fragment {
         TextView txtQtdePedido;
         TextView txtTamanho;
         TextView txtValorTotal;
+        TextView txtPersona;
+        TextView txtNomeComp;
+        TextView txtCpfComp;
 
         public PedidosViewHolder(View itemView) {
             super(itemView);
@@ -59,6 +62,9 @@ public class PedidosFragment extends Fragment {
             txtQtdePedido = itemView.findViewById(R.id.textQtdePedido);
             txtTamanho = itemView.findViewById(R.id.textTamPedido);
             txtValorTotal = itemView.findViewById(R.id.textPrecoTotal);
+            txtPersona = itemView.findViewById(R.id.textPersonPedido);
+            txtNomeComp = itemView.findViewById(R.id.textNomeCompPedido);
+            txtCpfComp = itemView.findViewById(R.id.textCpfCompPedido);
         }
     }
 
@@ -97,6 +103,13 @@ public class PedidosFragment extends Fragment {
                 pedidosViewHolder.txtTamanho.setText(pedido.getTamanho());
                 pedidosViewHolder.imagePedido.setImageResource(pedido.getProduto().getFoto());
                 pedidosViewHolder.txtQtdePedido.setText(String.valueOf(pedido.getQuantidade()));
+                pedidosViewHolder.txtNomeComp.setText(pedido.getComprador().getNome());
+                pedidosViewHolder.txtCpfComp.setText(pedido.getComprador().getCpf());
+                if (pedido.isPersonalizado()) {
+                    pedidosViewHolder.txtPersona.setText(pedido.getFrasePersonalizado());
+                } else {
+                    pedidosViewHolder.txtPersona.setText("Sem personalização");
+                }
                 pedidosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {

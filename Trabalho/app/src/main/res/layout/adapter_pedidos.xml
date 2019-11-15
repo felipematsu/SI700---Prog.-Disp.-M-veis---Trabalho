@@ -21,7 +21,8 @@
             <TextView
                 android:id="@+id/textNomePedido"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textColor="#000000"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -38,7 +39,8 @@
                     android:id="@+id/textQtdePedido"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingRight="70dp"/>
+                    android:paddingRight="70dp"
+                    android:textColor="#000000"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -49,7 +51,27 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textTamPedido"/>
+                    android:id="@+id/textTamPedido"
+                    android:textColor="#000000"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textLabelPersonPedido"
+                    android:text="Personalização: "/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textPersonPedido"
+                    android:textColor="#000000"/>
 
             </LinearLayout>
 
@@ -67,7 +89,8 @@
                 <TextView
                     android:id="@+id/textPrecoTotal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="#000000"/>
 
             </LinearLayout>
 
@@ -76,10 +99,40 @@
     </LinearLayout>
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textLabelNomeComp"
+        android:text="Nome do Comprador:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textNomeCompPedido"
+        android:textColor="#000000"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textLabelCpfComp"
+        android:text="CPF do Comprador:"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textCpfCompPedido"
+        android:textColor="#000000"/>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelMaisDetalhes"
         android:text="Clique para remover o pedido"
-        android:paddingBottom="10dp"/>
+        android:paddingBottom="10dp"
+        android:gravity="center"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#000000" />
 
 </LinearLayout>
