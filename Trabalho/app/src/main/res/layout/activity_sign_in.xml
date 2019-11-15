@@ -34,7 +34,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Deslogado"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:textColor="#000000"/>
 
         <TextView
             android:id="@+id/detail"
@@ -53,8 +54,15 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="10dp"
             android:gravity="center"
-            android:text="Tela de SignIn"
-            android:textSize="36sp" />
+            android:text="Bem vindo(a) a Via Amore!"
+            android:textSize="30sp"
+            android:textColor="#807000"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageViewLogoLogin"
+            android:layout_gravity="center"/>
 
     </LinearLayout>
 
@@ -87,14 +95,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Sign Out" />
+                android:text="Logout" />
 
-<!--            <Button-->
-<!--                android:id="@+id/disconnect_button"-->
-<!--                android:layout_width="0dp"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_weight="1"-->
-<!--                android:text="Revoke" />-->
 
         </LinearLayout>
 

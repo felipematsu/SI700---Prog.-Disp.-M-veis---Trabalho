@@ -197,7 +197,7 @@ public class CadastraProdutoFragment extends Fragment {
         editCpfCompra.setText("");
         editPersona.setText("");
         spinnerQtde.setSelection(0);
-        radioGroupTam.check(R.id.radioTamP);
+        radioGroupTam.clearCheck();
         checkPersona.setChecked(false);
         editPersona.setVisibility(view.INVISIBLE);
     }
