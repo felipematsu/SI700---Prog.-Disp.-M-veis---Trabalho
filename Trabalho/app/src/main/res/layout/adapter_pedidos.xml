@@ -104,6 +104,7 @@
     </LinearLayout>
 
     <TextView
+        android:paddingTop="3dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textLabelNomeComp"
@@ -119,6 +120,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textLabelCpfComp"
+        android:paddingTop="5dp"
         android:text="CPF do Comprador:"/>
 
     <TextView
@@ -131,8 +133,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelMaisDetalhes"
-        android:text="Mantenha pressionado para remover o pedido"
+        android:text="Para remover o pedido, dê um click longo"
         android:paddingBottom="10dp"
+        android:paddingTop="10dp"
         android:gravity="center"/>
 
 
