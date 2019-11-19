@@ -110,9 +110,9 @@ public class PedidosFragment extends Fragment {
                 } else {
                     pedidosViewHolder.txtPersona.setText("Sem personalização");
                 }
-                pedidosViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+                pedidosViewHolder.itemView.setOnLongClickListener(new View.OnLongClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public boolean onLongClick(View view) {
                         AlertDialog.Builder cancelarExcluir = new AlertDialog.Builder(getContext());
                         cancelarExcluir.setTitle("Remover Pedido");
                         cancelarExcluir.setMessage("Deseja remover este pedido?");
@@ -127,6 +127,7 @@ public class PedidosFragment extends Fragment {
                             }
                         });
                         cancelarExcluir.create().show();
+                        return true;
                     }
                 });
             }

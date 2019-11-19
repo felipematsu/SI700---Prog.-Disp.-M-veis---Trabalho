@@ -131,7 +131,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/labelMaisDetalhes"
-        android:text="Clique para remover o pedido"
+        android:text="Mantenha pressionado para remover o pedido"
         android:paddingBottom="10dp"
         android:gravity="center"/>
 
