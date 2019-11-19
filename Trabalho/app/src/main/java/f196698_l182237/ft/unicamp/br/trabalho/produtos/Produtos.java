@@ -21,6 +21,5 @@ public class Produtos {
             new Produto("Shorts Masculino", "Shorts para se utilizar no verão", R.drawable.shorts_masc, 35.00, 15),
             new Produto("Meia Longa", "Meias para se aquecer no inverno", R.drawable.meia, 5.00, 16),
             new Produto("Calça Jeans", "Calças sempre na moda", R.drawable.calca_jeans, 45.00, 17),
-            new Produto("Chapéu", "Chapéu Panamá estiloso", R.drawable.chapeu, 15.00, 18),
     };
 }

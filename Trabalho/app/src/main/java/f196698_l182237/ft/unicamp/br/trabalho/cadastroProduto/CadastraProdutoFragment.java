@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -116,6 +117,7 @@ public class CadastraProdutoFragment extends Fragment {
 
         checkPersona.setOnClickListener(checkBoxListener);
         buttonConfirma.setOnClickListener(verificaCampos);
+        spinnerQtde.setOnItemSelectedListener(updateSpinner);
 
         displayProdCad();
 
@@ -146,6 +148,21 @@ public class CadastraProdutoFragment extends Fragment {
                 editPersona.setVisibility(view.INVISIBLE);
                 editPersona.setText("");
             }
+        }
+    };
+
+    public AdapterView.OnItemSelectedListener updateSpinner = new AdapterView.OnItemSelectedListener() {
+        @Override
+        public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+            Produto produto = Produtos.produtos[indice];
+            Double valorTotal = produto.getPreco() * (spinnerQtde.getSelectedItemPosition() + 1);
+            if (!valorTotal.isNaN()) {
+                txtPrecoTotal.setText("R$ " + valorTotal);
+            }
+        }
+
+        @Override
+        public void onNothingSelected(AdapterView<?> adapterView) {
         }
     };
 
