@@ -1,6 +1,7 @@
 package f196698_l182237.ft.unicamp.br.trabalho.cadastroProduto;
 
 
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -179,6 +181,8 @@ public class CadastraProdutoFragment extends Fragment {
                 Toast.makeText(getActivity(), "Campo Nome obrigatório", Toast.LENGTH_SHORT).show();
             } else if (editCpfCompra.getText().length() == 0) {
                 Toast.makeText(getActivity(), "Campo CPF obrigatório", Toast.LENGTH_SHORT).show();
+            } else if (editCpfCompra.getText().length() != 0 && editCpfCompra.getText().length() < 11) {
+                Toast.makeText(getActivity(), "CPF inválido, são necessários 11 digitos", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "Pedido Confirmado", Toast.LENGTH_SHORT).show();
 
@@ -198,6 +202,8 @@ public class CadastraProdutoFragment extends Fragment {
                 Pedido pedido = new Pedido(account.getEmail(), produto, quantidade, produto.getPreco() * quantidade, personalizacao, personalizacaoFrase, tamanho, comprador);
 
                 mFirebaseDatabaseReference.child("pedidos").child(account.getEmail().replace(".", "_")).push().setValue(pedido);
+
+                ((InputMethodManager) getContext().getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(editCpfCompra.getWindowToken(), 0);
 
                 if(onPedidosRequest != null) {
                     onPedidosRequest.onRequest();

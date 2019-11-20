@@ -171,6 +171,8 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/editCpfComprador"
                     android:hint="CPF do Comprador"
+                    android:inputType="number"
+                    android:maxLength="11"
                     />
 
             </LinearLayout>
