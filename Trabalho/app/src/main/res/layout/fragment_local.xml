@@ -16,7 +16,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Nossa Localização"
-            android:textColor="#000000"
+            android:textColor="#807000"
+            android:textStyle="bold"
             android:textSize="30dp"
             android:paddingBottom="15dp"
             android:gravity="center"/>
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:id="@+id/textLocalLoja"
             android:text="Rua do Elefante, 111, Centro, Limeira-SP"
-            android:textColor="#000000"
+            android:textColor="#807000"
             android:textSize="20dp"
             android:gravity="center"/>
 

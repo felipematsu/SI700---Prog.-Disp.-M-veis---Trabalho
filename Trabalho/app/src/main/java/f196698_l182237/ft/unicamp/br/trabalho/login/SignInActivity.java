@@ -190,7 +190,7 @@ public class SignInActivity extends AppCompatActivity implements
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
         } else {
             mStatusTextView.setText("Realize o login para acessar o app");
-            mTitleTextView.setText("Bem vindo(a) a Via Amore!");
+            mTitleTextView.setText("Bem vindo(a) à Via Amore!");
             mLogoImageView.setVisibility(View.VISIBLE);
             mLogoImageView.setImageResource(R.drawable.logo_loja);
 
