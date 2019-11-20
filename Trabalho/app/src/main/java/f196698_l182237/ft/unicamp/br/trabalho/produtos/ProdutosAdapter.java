@@ -9,7 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 
@@ -78,7 +80,9 @@ public class ProdutosAdapter extends RecyclerView.Adapter {
             imageView.setImageResource(produto.getFoto());
             txtNomeProd.setText(produto.getNome());
             txtDescProd.setText(produto.getDescricao());
-            txtPrecoProd.setText("R$ " + String.valueOf(produto.getPreco()));
+
+            NumberFormat reais = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+            txtPrecoProd.setText(String.valueOf(reais.format(produto.getPreco())));
         }
 
     }

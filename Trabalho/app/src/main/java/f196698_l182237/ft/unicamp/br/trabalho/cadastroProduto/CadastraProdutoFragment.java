@@ -28,8 +28,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Locale;
 
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 import f196698_l182237.ft.unicamp.br.trabalho.comprador.Comprador;
@@ -138,7 +140,9 @@ public class CadastraProdutoFragment extends Fragment {
         imageView.setImageResource(produto.getFoto());
         txtNomeProd.setText(produto.getNome());
         txtDescProd.setText(produto.getDescricao());
-        txtPrecoTotal.setText("R$ " + String.valueOf(produto.getPreco()));
+
+        NumberFormat reais = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+        txtPrecoTotal.setText(String.valueOf(reais.format(produto.getPreco())));
     }
 
     public View.OnClickListener checkBoxListener = new View.OnClickListener() {
@@ -159,7 +163,8 @@ public class CadastraProdutoFragment extends Fragment {
             Produto produto = Produtos.produtos[indice];
             Double valorTotal = produto.getPreco() * (spinnerQtde.getSelectedItemPosition() + 1);
             if (!valorTotal.isNaN()) {
-                txtPrecoTotal.setText("R$ " + valorTotal);
+                NumberFormat reais = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+                txtPrecoTotal.setText(reais.format(valorTotal));
             }
         }
 

@@ -26,6 +26,9 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.NumberFormat;
+import java.util.Locale;
+
 import f196698_l182237.ft.unicamp.br.trabalho.R;
 
 
@@ -99,7 +102,10 @@ public class PedidosFragment extends Fragment {
             @Override
             protected void onBindViewHolder(@NonNull final PedidosViewHolder pedidosViewHolder, final int i, @NonNull final Pedido pedido) {
                 pedidosViewHolder.txtNomePedido.setText(pedido.getProduto().getNome());
-                pedidosViewHolder.txtValorTotal.setText("R$ " + String.valueOf(pedido.getValorTotal()));
+
+                NumberFormat reais = NumberFormat.getCurrencyInstance(new Locale("pt", "BR"));
+                pedidosViewHolder.txtValorTotal.setText(String.valueOf(reais.format(pedido.getValorTotal())));
+
                 pedidosViewHolder.txtTamanho.setText(pedido.getTamanho());
                 pedidosViewHolder.imagePedido.setImageResource(pedido.getProduto().getFoto());
                 pedidosViewHolder.txtQtdePedido.setText(String.valueOf(pedido.getQuantidade()));
